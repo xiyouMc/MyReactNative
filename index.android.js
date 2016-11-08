@@ -13,7 +13,10 @@ import {
   TextInput,
   ScrollView,
   Image,
-  ListView
+  ListView,
+  Picker,
+  Alert,
+  TouchableHighlight
 } from 'react-native';
 
 class Blink extends Component {
@@ -37,7 +40,8 @@ class Blink extends Component {
   }
 }
 var REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
-
+var alertMessage = 'Credibly reintermediate next-generation potentialities after goal-oriented ' +
+                   'catalysts for change. Dynamically revolutionize.';
 class AwesomeProject extends Component{
   constructor(props) {
     super(props);
@@ -98,7 +102,22 @@ class AwesomeProject extends Component{
           renderRow={this.renderMovie}
           style={styles.listView}
           />
-        
+        <Picker
+  selectedValue={this.state.language}
+  onValueChange={(lang) => this.setState({language: lang})}>
+  <Picker.Item label="Java" value="java" />
+  <Picker.Item label="JavaScript" value="js" />
+</Picker>
+
+<TouchableHighlight style={styles.wrapper}
+          onPress={() => Alert.alert(
+            'Alert Title',
+            alertMessage,
+          )}>
+          <View style={styles.button}>
+            <Text>Alert with message and default button</Text>
+          </View>
+        </TouchableHighlight>
       </View> 
       );
   }
